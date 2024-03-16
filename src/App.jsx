@@ -1,14 +1,32 @@
-
-
 import { useEffect, useState } from 'react'
 import './App.css'
-import Singlerecipe from './Singlerecipe'
-import SingleRecipe from './Singlerecipe'
+import SingleRecipe from './SingleRecipe'
+
 
 function App() {
   
 
 const [recipes, setRecipe] =useState([])
+
+const [items, setItem]  = useState([])
+
+const handlePrepare = (id)=>{
+const newItem=items.filter(item=>item.recipe_id!=id)
+setItem(newItem)
+}
+
+const handleCount = (p) =>{
+  
+const isExist = items.find(item=>item.recipe_id==p.recipe_id)
+if(!isExist){
+
+  setItem([...items, p])
+}
+else{
+  alert('ar no dis')
+}
+ 
+}
 
 useEffect(()=>{
 fetch("./recipies.json")
@@ -95,15 +113,15 @@ console.log(recipes)
 <p className='mt-5 text-center w-[1000px] mx-auto font-normal'>
 Delight in our diverse recipes, from comforting classNameics like Chicken Curry and Spaghetti Bolognese to healthier options like Vegetable Stir Fry. Indulge in Grilled Salmon or decadent Chocolate Cake.</p>
 
-<div className='mt-7 flex'>
+<div className='mt-7 flex gap-5'>
 
 <div className='w-2/3'>
 
  
  
-  <div className='text-start pr-4 my-6 grid grid-cols-2 gap-5 -ml-10 '>
+  <div className='text-start pr-4 my-6 grid grid-cols-2 gap-5 -ml-20 '>
     
-    {recipes.map( (rp)=>(<SingleRecipe recipe={rp} ></SingleRecipe>))}
+    {recipes.map( (rp)=>(<SingleRecipe handleCount={handleCount} recipe={rp} ></SingleRecipe>))}
    
     
   </div>
@@ -112,8 +130,50 @@ Delight in our diverse recipes, from comforting classNameics like Chicken Curry 
 </div>
 
 
-<div className='w-1/3' >
-Single 
+<div className='w-2/5 mx-auto'>
+  <div className='border border-gray-400  h-min mt-6 rounded-xl'> 
+<h1 className='mt-6 text-2xl font-semibold'> Want to Cook: {items.length} </h1>
+
+<p className='border-b-2 mt-2 mb-4 w-64 mx-auto'></p>
+
+<div className='text-[#878787] font-medium text-[#282828B3]'>
+  <table className="table mb-4">
+ 
+    <thead>
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Time</th>
+        <th>Calories</th>
+      </tr>
+    </thead>
+    <tbody>
+
+   
+        {
+          items.map((item, index)=>(
+        <tr key={index} className="bg-gray-200 rounded-xl h-[84px] mt-2">
+        <th>{index + 1} </th>
+        <td>{item.recipe_name}</td>
+        <td>{item.preparing_time} </td>
+        <td>{item.calories} </td>
+       <button onClick={()=>{handlePrepare(item.recipe_id)}} className='  bg-[#0BE58A] capitalize w-[115px] h-[38px] btn rounded-full mt-4 text-[18px] font-medium text-[#150B2B] px-2 py-1'>
+  Preparing
+</button>
+      
+      </tr>
+   
+            ))
+        }
+      
+    
+    </tbody>
+  </table>
+</div>
+
+
+  </div>
+
 </div>
 
 
