@@ -9,11 +9,20 @@ function App() {
 const [recipes, setRecipe] =useState([])
 
 const [items, setItem]  = useState([])
+const [cookingItems, setCookingItems] = useState([]);
 
 const handlePrepare = (id)=>{
 const newItem=items.filter(item=>item.recipe_id!=id)
 setItem(newItem)
+const preparingItem = items.find(item => item.recipe_id === id);
+setCookingItems(prevCookingItems => [...prevCookingItems, preparingItem]);
 }
+
+
+
+
+
+
 
 const handleCount = (p) =>{
   
@@ -23,7 +32,7 @@ if(!isExist){
   setItem([...items, p])
 }
 else{
-  alert('ar no dis')
+  alert("Recipe Already Exists")
 }
  
 }
@@ -61,14 +70,18 @@ console.log(recipes)
       <li><a>Home</a></li>
       <li><a>Recipes</a></li>
       <li><a>About</a></li>
-      <li><a>Search</a></li>
+      <li><a>Search </a></li>
+      
     </ul>
   </div>
 
   <div className="flex-none gap-2">
-    <div className="form-control">
+   <label htmlFor="">
       <input type="text" placeholder="Search" className="input input-bordered w-24 md:w-auto" />
-    </div>
+      <button className="btn btn-ghost btn-circle">
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+    </button>
+    </label>
     <div className="dropdown dropdown-end">
       <div tabindex="0" role="button" className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
@@ -91,14 +104,19 @@ console.log(recipes)
 
    <main>
 {/* banner  */}
-<section className='max-w-[1320px] mx-auto h-[600px] '>
+<section className='max-w-[1320px] mx-auto '>
 
-<div className='bg-[]'>
+<div className='bg-cover bg-center rounded-2xl mx-auto  text-white' style={{ backgroundImage: "url('../src/images/Rectangle1.png')", height: "600px", width: "1220px", margin: "0 auto" }}>
 
 
-<img src="../src/images/Rectangle1.png"/>
+<h1 className='font-bold text-[52px] text-center px-52 pt-[129px]'>Discover an exceptional cooking class tailored for you!</h1>
+ 
+ <p className='pt-8 text-[18px] font-normal px-48'>Learn and Master Basic Programming, Data Structures, Algorithm, OOP, Database and solve 500+ coding problems to become an exceptionally well world-class Programmer.</p>
   
-
+<div className='flex mt-10 mx-64 justify-center gap-5  '>
+  <button className='btn bg-[#0BE58A] h-[65px] w-[187px] rounded-full text-[20px] font-semibold'>Explore Now </button>
+  <button className='btn h-[65px] w-[201px] rounded-full bg-transparent text-[20px] font-semibold text-white'>Our Feedback</button>
+</div>
 
 </div>
 
@@ -107,7 +125,7 @@ console.log(recipes)
 
 {/* Our Recipies */}
 
-<section className='mt[100px] max-w-[1320px] mx-auto'>
+<section className='mt[100px] max-w-[1320px] mx-auto mt-4 '>
 
 <h1 className='text-[40px] font-semibold'>Our Recipies</h1>
 <p className='mt-5 text-center w-[1000px] mx-auto font-normal'>
@@ -115,13 +133,13 @@ Delight in our diverse recipes, from comforting classNameics like Chicken Curry 
 
 <div className='mt-7 flex gap-5'>
 
-<div className='w-2/3'>
+<div className='w-2/3 '>
 
  
  
-  <div className='text-start pr-4 my-6 grid grid-cols-2 gap-5 -ml-20 '>
+  <div className='text-start pr-4 my-6 grid grid-cols-2 gap-5 -ml-5 '>
     
-    {recipes.map( (rp)=>(<SingleRecipe handleCount={handleCount} recipe={rp} ></SingleRecipe>))}
+    {recipes.map((rp)=>(<SingleRecipe handleCount={handleCount} recipe={rp} ></SingleRecipe>))}
    
     
   </div>
@@ -130,8 +148,9 @@ Delight in our diverse recipes, from comforting classNameics like Chicken Curry 
 </div>
 
 
-<div className='w-2/5 mx-auto'>
-  <div className='border border-gray-400  h-min mt-6 rounded-xl'> 
+<div className=' mx-auto mt-6 border h-min  border-gray-400 w-1/3  rounded-xl '>
+  {/* Want to cook */}
+  <div> 
 <h1 className='mt-6 text-2xl font-semibold'> Want to Cook: {items.length} </h1>
 
 <p className='border-b-2 mt-2 mb-4 w-64 mx-auto'></p>
@@ -152,33 +171,57 @@ Delight in our diverse recipes, from comforting classNameics like Chicken Curry 
    
         {
           items.map((item, index)=>(
-        <tr key={index} className="bg-gray-200 rounded-xl h-[84px] mt-2">
+        <tr key={index} className="bg-gray-200  rounded-xl h-[84px] mt-2">
         <th>{index + 1} </th>
         <td>{item.recipe_name}</td>
         <td>{item.preparing_time} </td>
         <td>{item.calories} </td>
-       <button onClick={()=>{handlePrepare(item.recipe_id)}} className='  bg-[#0BE58A] capitalize w-[115px] h-[38px] btn rounded-full mt-4 text-[18px] font-medium text-[#150B2B] px-2 py-1'>
+       <button  onClick={()=>{handlePrepare(item.recipe_id)}} className='  bg-[#0BE58A] capitalize w-[115px] h-[38px] btn rounded-full mt-4 text-[18px] font-medium text-[#150B2B] px-2 py-1'>
   Preparing
 </button>
-      
-      </tr>
-   
-            ))
-        }
-      
-    
+      </tr>))}
     </tbody>
   </table>
 </div>
 
 
   </div>
+{/* Currently Cooking */}
+
+<div>
+                <h1 className='text-2xl font-semibold mb-3'>Currently Cooking: {cookingItems.length}</h1>
+                {/* Currently cooking content */}
+                <div className='text-[#878787] font-medium text-[#282828B3]'>
+                  <table className="table mb-4">
+                    <thead>
+                      <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Time</th>
+                        <th>Calories</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {cookingItems.map((item, index) => (
+                        <tr key={index} className="bg-gray-200 rounded-xl h-[84px] mt-2">
+                          <th>{index + 1}</th>
+                          <td>{item.recipe_name}</td>
+                          <td>{item.preparing_time}</td>
+                          <td>{item.calories}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
 
 </div>
 
 
-</div>
 
+
+</div>
 
 
 
