@@ -1,0 +1,64 @@
+[
+
+    {
+      "recipe_image": "https://i.ibb.co/qDW5TB4/ai-generated-7974773-1280.jpg",
+      "recipe_id": 2,
+      "recipe_name": "Spaghetti Bolognese",
+      "short_description": "Classic Italian pasta dish with a rich meat sauce.",
+      "ingredients": ["400 g spaghetti", "300 g ground beef", "200 g tomato sauce", "100 g onion", "2 cloves garlic", "50 g parmesan cheese"],
+      "preparing_time": "40 min",
+      "calories": "450 calories"
+    },
+    
+    {
+      "recipe_image": "https://i.ibb.co/K5pPbM9/sweets-847915-1280.jpg",
+      "recipe_id": 5,
+      "recipe_name": "Chocolate Cake",
+      "short_description": "Decadent and moist chocolate cake topped with ganache.",
+      "ingredients": ["200 g all-purpose flour", "150 g sugar", "100 g cocoa powder", "3 eggs", "150 ml milk", "150 g butter"],
+      "preparing_time": "50 min",
+      "calories": "400 calories"
+
+    },
+
+      {
+        "recipe_image": "https://i.ibb.co/mGnXZFC/sushmita-chatterjee-Xnb826-JWd-DI-unsplash.jpg",
+        "recipe_id": 1,
+        "recipe_name": "Chicken Curry",
+        "short_description": "A flavorful and aromatic chicken curry dish.",
+        "ingredients": ["550 g chicken", "120 ml coconut milk", "200 g onion", "3 cloves garlic", "2 tsp curry powder", "1 tsp turmeric"],
+        "preparing_time": "45 min",
+        "calories": "380 calories"
+      },
+      
+      {
+        "recipe_image": "https://i.ibb.co/JBG5948/stacey-doyle-d-Odt-Mzvjoc4-unsplash.jpg",
+        "recipe_id": 3,
+        "recipe_name": "Vegetable Stir Fry",
+        "short_description": "Healthy and colorful stir-fried vegetables with a savory sauce.",
+        "ingredients": ["300 g mixed vegetables", "150 g tofu", "100 g bell peppers", "50 g carrots", "2 tbsp soy sauce", "1 tsp sesame oil"],
+        "preparing_time": "25 min",
+        "calories": "250 calories"
+      },
+      {
+        "recipe_image": "https://i.ibb.co/kM1ZwW0/alice-pasqual-a2sc-Gjpi-I5-E-unsplash.jpg",
+        "recipe_id": 4,
+        "recipe_name": "Grilled Salmon",
+        "short_description": "Delicious grilled salmon fillets seasoned with herbs.",
+        "ingredients": ["4 salmon fillets", "2 tbsp olive oil", "1 lemon", "2 cloves garlic", "1 tsp dill", "Salt and pepper to taste"],
+        "preparing_time": "20 min",
+        "calories": "320 calories"
+      },
+      
+      {
+        "recipe_image": "https://i.ibb.co/gDgvGgj/frames-for-your-heart-J5e-OPe-Fqcu-Y-unsplash.jpg",
+        "recipe_id": 6,
+        "recipe_name": "Greek Salad",
+        "short_description": "Fresh and tangy salad with Mediterranean flavors.",
+        "ingredients": ["200 g cucumber", "150 g cherry tomatoes", "100 g feta cheese", "50 g black olives", "2 tbsp olive oil", "1 tbsp red wine vinegar"],
+        "preparing_time": "15 min",
+        "calories": "180 calories"
+      }
+    
+  ]
+  
