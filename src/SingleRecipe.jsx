@@ -2,10 +2,10 @@ import React from 'react';
 
 const SingleRecipe = ({recipe , handleCount}) => {
     return (
-        <div  className='w-[400px] h-[680px] border border-gray-400 rounded-2xl text-start px-4 py-4 ml-5 '>
+        <div  className=' lg:w-[400px] h-[695px] border border-gray-400 rounded-2xl text-start px-4 py-4 ml-5 '>
            <img className=' h-[250px] w-[360px] rounded-2xl object-cover' src={recipe.recipe_image} alt="" />
     <h1 className='mt-2 text-[20px] font-semibold'>{recipe.recipe_name} </h1>
-<p className='mt-3 mb-7 h-5 text-[#878787] font-normal'>{recipe.short_description} </p>
+<p className='mt-1 mb-8 h-5 text-[#878787] font-normal'>{recipe.short_description} </p>
 <hr />
 
 <h1 className='mt-2 text-[18px] font-medium' >Ingredients:6</h1>
@@ -35,7 +35,7 @@ const SingleRecipe = ({recipe , handleCount}) => {
 </div>
 
 
-<button onClick={()=> handleCount(recipe)} className='btn bg-[#0BE58A] capitalize rounded-full mt-2 text-[18px] font-medium text-[#150B2B] h-[49px] w-[170px]'>
+<button onClick={()=> handleCount(recipe)} className='btn bg-[#0BE58A] capitalize rounded-full mt-3 text-[18px] font-medium text-[#150B2B] h-[49px] w-[170px] '>
   Want To Cook
 </button>
         </div>
