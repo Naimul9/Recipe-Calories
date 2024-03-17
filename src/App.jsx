@@ -1,6 +1,9 @@
+
 import { useEffect, useState } from 'react'
 import './App.css'
 import SingleRecipe from './SingleRecipe'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
@@ -32,7 +35,7 @@ if(!isExist){
   setItem([...items, p])
 }
 else{
-  alert("Recipe Already Exists")
+  toast("Recipe Already Exists")
 }
  
 }
@@ -228,7 +231,7 @@ Delight in our diverse recipes, from comforting classNameics like Chicken Curry 
 
    </main>
     
-     
+     <ToastContainer/>
     </>
   )
 }
